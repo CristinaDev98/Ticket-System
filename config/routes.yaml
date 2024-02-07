@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+    register:
+        path: /register
+        controller: App\Controller\User\AuthController::register
+    login:
+        path: /login
+        controller: App\Controller\User\AuthController::login
