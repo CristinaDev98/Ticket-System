@@ -10,26 +10,31 @@
 
 <nav class="navbar navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ path('app_ticket') }}">
             <h2>Ticket System</h2>
         </a>
     </div>
 </nav>
 <div class="container text-center mt-4">
+    <h1 class="title-dash">Benvenuto nella tua dashboard</h1>
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6">
             <div class="card mb-4 rounded-pill mt-5">
                 <div class="card-body">
-                    <h5 class="card-title "><a href="#" class="text-decoration-none text-primary">Crea Ticket</a>
-                    </h5>
+                    <a href="{{ path('create_ticket') }}" class="text-decoration-none text-primary">
+                        <h5 class="card-title ">Crea Ticket
+                        </h5>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="card mb-4 rounded-pill mt-5">
                 <div class="card-body">
-                    <h5 class="card-title "><a href="#" class="text-decoration-none text-primary">Visualizza
-                        Ticket</a></h5>
+                    <a href="#" class="text-decoration-none text-primary">
+                        <h5 class="card-title ">Visualizza
+                            Ticket</h5>
+                    </a>
                 </div>
             </div>
         </div>
