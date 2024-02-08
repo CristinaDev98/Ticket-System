@@ -88,11 +88,13 @@
 <div class="container d-flex justify-content-center align-items-center mt-5">
     <div class="subscribe">
         <p>Crea Ticket</p>
-        <div class="mb-3">
-            <textarea class="form-control" placeholder="Messaggio" name="" id="" rows="3"></textarea>
-        </div>
-        <br>
-        <div class="submit-btn">INVIA</div>
+        <form class="form" action="{{ path('store_ticket') }}" method="POST">
+            <div class="mb-3">
+                <textarea class="form-control" placeholder="Messaggio" name="message" id="message" rows="3"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="submit-btn">INVIA</button>
+        </form>
     </div>
 </div>
 
