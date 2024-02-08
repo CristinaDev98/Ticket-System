@@ -18,30 +18,17 @@ class AuthController extends AbstractController
             'controller_name' => 'AuthController',
         ]);
     }
-    #[Route('/register', name: 'register')]
-    public function register(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
-    {
-        $user = new User();
-        $user->setUsername($request->request->get('username'));
+    // #[Route('/register', name: 'register')]
+    // public function register(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
+    // {
+    //     //
+    //     return $this->redirectToRoute('home');
+    // }
 
-        $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
-
-        $user->setRole('utilizzatore');
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('home');
-    }
-
-    #[Route('/login', name: 'login')]
-    public function login(Request $request): Response
-    {
-        // Logica di autenticazione dell'utente
-        // ...
-
-        // Esempio di redirect dopo il login
-        return $this->redirectToRoute('home');
-    }
+    //#[Route('/login', name: 'login')]
+    // public function login(Request $request): Response
+    // {
+    //     //
+    //     return $this->redirectToRoute('home');
+    // }
 }
