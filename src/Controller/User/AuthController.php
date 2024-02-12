@@ -19,7 +19,7 @@ class AuthController extends AbstractController
         ]);
     }
     // #[Route('/register', name: 'register')]
-    // public function register(Request $request, UserPasswordHasherInterface $passwordEncoder): Response
+    // public function register(Request $request): Response
     // {
     //     //
     //     return $this->redirectToRoute('home');

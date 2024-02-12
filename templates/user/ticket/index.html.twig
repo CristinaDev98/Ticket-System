@@ -7,7 +7,6 @@
 
 </style>
 
-
 <nav class="navbar navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ path('app_ticket') }}">
@@ -15,6 +14,18 @@
         </a>
     </div>
 </nav>
+{% if app.session.flashBag.has('success') %}
+<div class="alert alert-success float-end border" role="alert">
+    {{ (app . session . flashBag . get('success')) | join }}
+</div>
+{% endif %}
+
+{% if app.session.flashBag.has('error') %}
+<div class="alert alert-danger float-end border" role="alert">
+    {{ (app . session . flashBag . get('error')) | join }}
+</div>
+{% endif %}
+
 <div class="container text-center mt-4">
     <h1 class="title-dash mt-5">Benvenuto nella tua dashboard</h1>
     <div class="row justify-content-center align-items-center mt-5">
@@ -31,9 +42,9 @@
         <div class="col-md-6">
             <div class="card mb-4 rounded-pill mt-5">
                 <div class="card-body">
-                    <a href="#" class="text-decoration-none text-primary">
+                    <a href="{{ path('view_ticket') }}" class="text-decoration-none text-primary">
                         <h5 class="card-title"><b>Visualizza
-                            Ticket</b></h5>
+                                Ticket</b></h5>
                     </a>
                 </div>
             </div>

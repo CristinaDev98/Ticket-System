@@ -6,3 +6,6 @@ controllers:
 create_ticket:
     path: /create-ticket
     controller: App\Controller\User\TicketController::create
+view_ticket:
+    path: /view-ticket
+    controller: App\Controller\User\TicketController::view

@@ -41,30 +41,33 @@ class TicketController extends AbstractController
             $user = $userRepository->find(1);
     
             $ticket = new Ticket();
-    
             $ticket->setUser($user);
     
-            // Ottieni il messaggio 
             $message = $request->request->get('message');
     
-            // Verifica se il messaggio è stato fornito
-            if ($message === null) {
-                throw $this->createNotFoundException('Il campo messaggio è obbligatorio.');
-            }
-    
-            // Imposta il messaggio
             $ticket->setMessage($message);
     
-            // Imposta data
             $now = new \DateTimeImmutable();
             $ticket->setCreatedAt($now);
             $ticket->setUpdatedAt($now);
     
-            // Salva ticket nel db
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
+
+            $this->addFlash('success', 'Ticket creato con successo!');
         }
 
         return $this->redirectToRoute('app_ticket');
+    }
+
+    #[Route('/view-ticket', name: 'view_ticket')]
+    public function view(): Response 
+    {
+        $ticketRepository = $this->entityManager->getRepository(Ticket::class);
+        $tickets = $ticketRepository->findAll();
+        
+        return $this->render('user/ticket/view.html.twig', [
+            'tickets' => $tickets,
+        ]);
     }
 }
