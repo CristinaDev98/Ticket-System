@@ -6,7 +6,6 @@
 <style>
     .card {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        max-width: 500px;
     }
 </style>
 
@@ -28,6 +27,9 @@
                         <h5 class="card-title text-center"><b>Ticket n: </b><span class="badge bg-primary rounded-pill">{{ ticket.id }}</span></h5>
                         <p class="card-text text-center">{{ ticket.message }}</p>
                         <p class="card-text text-center">Creato in data: <br>{{ ticket.createdAt|date('d/m/Y H:i:s') }}</p>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="{{ path('delete_ticket', {'id': ticket.id}) }}" class="btn btn-danger">Elimina</a>
+                        </div>
                     </div>
                 </div>
             </div>

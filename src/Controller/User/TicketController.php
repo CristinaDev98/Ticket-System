@@ -39,18 +39,18 @@ class TicketController extends AbstractController
         if ($request->isMethod('POST')) {
             $userRepository = $this->entityManager->getRepository(User::class);
             $user = $userRepository->find(1);
-    
+
             $ticket = new Ticket();
             $ticket->setUser($user);
-    
+
             $message = $request->request->get('message');
-    
+
             $ticket->setMessage($message);
-    
+
             $now = new \DateTimeImmutable();
             $ticket->setCreatedAt($now);
             $ticket->setUpdatedAt($now);
-    
+
             $this->entityManager->persist($ticket);
             $this->entityManager->flush();
 
@@ -61,13 +61,31 @@ class TicketController extends AbstractController
     }
 
     #[Route('/view-ticket', name: 'view_ticket')]
-    public function view(): Response 
+    public function view(): Response
     {
         $ticketRepository = $this->entityManager->getRepository(Ticket::class);
         $tickets = $ticketRepository->findAll();
-        
+
         return $this->render('user/ticket/view.html.twig', [
             'tickets' => $tickets,
         ]);
+    }
+
+    #[Route('/delete-ticket/{id}', name: 'delete_ticket')]
+    public function delete(int $id): Response
+    {
+        $ticketRepository = $this->entityManager->getRepository(Ticket::class);
+        $ticket = $ticketRepository->find($id);
+
+        if (!$ticket) {
+            throw $this->createNotFoundException('Ticket non trovato con ID: ' . $id);
+        }
+
+        $this->entityManager->remove($ticket);
+        $this->entityManager->flush();
+
+        $this->addFlash('success', 'Ticket eliminato con successo!');
+
+        return $this->redirectToRoute('app_ticket');
     }
 }

@@ -9,3 +9,6 @@ create_ticket:
 view_ticket:
     path: /view-ticket
     controller: App\Controller\User\TicketController::view
+app_delete_ticket:
+    path: /delete-ticket/{id}
+    controller: App\Controller\User\TicketController::delete
