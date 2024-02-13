@@ -17,6 +17,9 @@ security:
             form_login:
                 login_path: app_auth_login 
                 check_path: app_auth_login
+            logout:
+                path: app_auth_logout
+                target: app_auth_login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -28,7 +31,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/app_admin_ticket, roles: amministratore }
-         - { path: ^/app_ticket, roles: utilizzatore }
+         - { path: ^/app_ticket, roles: ROLE_USER }
 
 when@test:
     security:

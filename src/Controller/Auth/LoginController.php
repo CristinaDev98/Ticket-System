@@ -16,8 +16,6 @@ class LoginController extends AbstractController
         
         $error = $authenticationUtils->getLastAuthenticationError();
         $username = $authenticationUtils->getLastUsername();
-        
-
 
         $user = $this->getUser();
 
@@ -34,5 +32,10 @@ class LoginController extends AbstractController
             'username' => $username,
             'error'         => $error,
         ]);
+    }
+    #[Route('/auth/logout', name: 'app_auth_logout')]
+    public function logout()
+    {
+
     }
 }

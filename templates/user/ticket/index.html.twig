@@ -11,18 +11,22 @@
         <a class="navbar-brand" href="{{ path('app_ticket') }}">
             <h2>Ticket System</h2>
         </a>
+        {% if app.user %}
+            <a href="{{ path('app_auth_logout') }}">Logout</a>
+        {% endif %}
     </div>
 </nav>
+
 {% if app.session.flashBag.has('success') %}
-<div class="alert alert-success float-end border" role="alert">
-    {{ (app . session . flashBag . get('success')) | join }}
-</div>
+    <div class="alert alert-success float-end border" role="alert">
+        {{ (app . session . flashBag . get('success')) | join }}
+    </div>
 {% endif %}
 
 {% if app.session.flashBag.has('error') %}
-<div class="alert alert-danger float-end border" role="alert">
-    {{ (app . session . flashBag . get('error')) | join }}
-</div>
+    <div class="alert alert-danger float-end border" role="alert">
+        {{ (app . session . flashBag . get('error')) | join }}
+    </div>
 {% endif %}
 
 <div class="container text-center mt-4">

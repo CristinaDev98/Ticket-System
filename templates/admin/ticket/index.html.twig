@@ -12,6 +12,9 @@
             <h2>Ticket System</h2>
         </a>
         <span class="badge bg-primary rounded-pill float-end">ADMIN</span>
+        {% if app.user %}
+            <a href="{{ path('app_auth_logout') }}">Logout</a>
+        {% endif %}
     </div>
 </nav>
 {% if app.session.flashBag.has('success') %}
