@@ -12,3 +12,9 @@ view_ticket:
 app_delete_ticket:
     path: /delete-ticket/{id}
     controller: App\Controller\User\TicketController::delete
+app_auth_register:
+    path: '/auth/register'
+    controller: 'App\Controller\Auth\RegisterController::register'
+app_auth_login:
+    path: '/auth/login'
+    controller: 'App\Controller\Auth\LoginController::login'
