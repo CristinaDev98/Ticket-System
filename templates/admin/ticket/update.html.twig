@@ -1,0 +1,35 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modifica Ticket{{ parent() }}{% endblock %}
+
+{% block body %}
+<style>
+    .card{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        max-width: 70%;
+    }
+</style>
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('app_admin_ticket') }}">
+            <h2>Ticket System</h2>
+        </a>
+        <span class="badge bg-primary rounded-pill float-end">ADMIN</span>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="card mx-auto">
+        <h5 class="card-header text-center">Modifica Ticket n. <span class="badge bg-primary rounded-pill">{{ ticket.id }}</span></h5>
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="message" class="form-label">Messaggio</label>
+                    <textarea class="form-control" id="message" name="message" rows="3">{{ ticket.message }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary float-end">Salva</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

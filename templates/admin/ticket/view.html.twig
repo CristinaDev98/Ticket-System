@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Visualizza tutti i ticket{% endblock %}
+
+{% block body %}
+<style>
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+</style>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{{ path('app_admin_ticket') }}">
+            <h2>Ticket System</h2>
+        </a>
+        <span class="badge bg-primary rounded-pill float-end">ADMIN</span>
+    </div>
+</nav>
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+    <div class="subscribe">
+        <h1 class="text-center">Tutti i ticket creati</h1>
+        <div class="row mt-5">
+            {% for ticket in tickets %}
+            <div class="col-6">
+                <div class="card mb-4 rounded-pill mt-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><b>Ticket n: </b><span class="badge bg-primary rounded-pill">{{ ticket.id }}</span></h5>
+                        <p class="card-text text-center">{{ ticket.message }}</p>
+                        <p class="card-text text-center">Creato in data: <br>{{ ticket.createdAt|date('d/m/Y H:i:s') }}</p>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="{{ path('delete_ticket', {'id': ticket.id}) }}" class="btn btn-danger">Elimina</a>
+                            <a href="{{ path('update_admin_ticket', {'id': ticket.id}) }}" class="btn btn-primary ml-3">Modifica</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
